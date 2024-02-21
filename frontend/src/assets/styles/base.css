@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lato, sans-serif;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+h1, h2, h3, h4, h5{  
+    color:white;
+    font-weight: 400;
+    text-align: center;
+    margin:30px auto;
+}
+html, body {
+    min-height: 100%;
+  }
+body{
+    background-color: #222;
+}
+
+:root {
+    --main-green: #00d6b4;
+    --main-grey: #999;
+}
+  
+@font-face {
+    font-family: fa;
+    src: url("@/assets/fonts/fa-solid-900.woff2");
+ }

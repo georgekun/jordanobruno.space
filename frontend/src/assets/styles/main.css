@@ -1,0 +1,11 @@
+@import url('base.css');
+
+.head_text{
+    text-align: center;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+.head_text > div{
+    margin:auto;
+}
