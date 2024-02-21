@@ -4,8 +4,7 @@ from django.db import models
 class Project(models.Model):
     title = models.CharField(max_length=20)
     short_description = models.TextField(max_length=100)
-    full_descrtiption = models.CharField(max_length=1000, null=True)
-    
+    full_descrtiption = models.CharField(max_length=1000, null=True)    
     main_image = models.FileField()
     
     def __str__(self):

@@ -8,8 +8,7 @@ class Profile(models.Model):
     number_phone = models.CharField(max_length=30)  
     email = models.CharField(max_length=30)
     telegram_link = models.CharField(max_length=20)
-    vk_link = models.CharField(max_length=20)
-    
+    vk_link = models.CharField(max_length=20)    
     update_at = models.DateTimeField(auto_now_add=True)
 
 
