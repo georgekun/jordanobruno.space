@@ -7,8 +7,8 @@
                 v-for="cheep in names" 
                 :key="cheep.id"
             >
-            {{ cheep }}
-        </span>
+                {{ cheep }}
+            </span>
         </div>
     </div>
 </template>
@@ -38,12 +38,16 @@ h3{
     max-width: 500px;
     flex-wrap: wrap;
     margin:auto;
+    color:black;
+    font-weight: 500;
+  
 }
 .cheeps_item{
     background-color: var(--main-grey);
     width: auto;
-    max-height: 30px;
-    padding:5px;
+    max-height: 50px;
+    padding:5px 10px;
     border-radius: 10px;
+    text-align: center;
 }
 </style>

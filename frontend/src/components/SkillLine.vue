@@ -26,6 +26,7 @@ export default{
 <style scoped>
 .skill_line{
     width: 100%;
+    text-align:left;
 }
 .skill_line > div{
     min-height: 4px;
@@ -50,5 +51,6 @@ export default{
 
 .line_label{
     color:white;
+    text-align:left;
 }
 </style>

@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=100)
     type_project = models.CharField(max_length=50)
     stack = models.CharField(max_length=255)
     full_description = models.FileField(upload_to="_projects/")    

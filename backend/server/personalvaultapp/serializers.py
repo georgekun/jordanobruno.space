@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Profile, Resume
+from .models import Profile, Resume 
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -23,3 +23,9 @@ class ResumeSerializer(serializers.ModelSerializer):
 
         with open(instance.resume_html.path, "rb") as file:
             return file.read()
+
+
+
+class SkillSerializer(serializers.Serializer):
+    title = serializers.CharField()
+    percent = serializers.IntegerField()

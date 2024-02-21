@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
-       <div class="footer-box">
+       <div class="footer-box" v-if = "getInfoProfile">
             <ul>
-                <li id="gmail">jorj.knyazyan.15@gmail.com</li>
-                <li id="tg">@GeorgiKin</li>
+                <li id="gmail">{{getInfoProfile.email}}</li>
+                <li id="tg">{{getInfoProfile.telegram_link}}</li>
             </ul>
        </div>
 
@@ -14,8 +14,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default{
-    name: "Footer"
+    name: "Footer",
+    computed:{
+        ...mapGetters('main', ['getInfoProfile'])
+    }
 }
 
 </script>
@@ -35,25 +40,5 @@ export default{
     margin-top: auto;
     padding:10px 0;
 }
-#gmail, #tg {
-    position: relative;
-    padding-left: 25px; 
-  }
 
-#gmail:before, #tg:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 16px; /* Ширина картинки */
-    height: 16px; /* Высота картинки */
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-#gmail:before{
-    background-image: url("@/assets/gmail.png"); /* Путь к вашей картинке */
-}
-#tg:before{
-    background-image: url("@/assets/telegram.png"); 
-}
 </style>

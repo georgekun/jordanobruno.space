@@ -2,26 +2,38 @@
     <div class="about">
         <div class="left_bar">
             <Avatar/>
-            <h2>Hard skills</h2>
-            <SkillLine :percent="90" label="Навык"/>
-            <h2>Soft skills</h2>        
-            <MainButton text="Скачать резюме"/>  
+            <h2>{{ getInfoProfile.name }}</h2>
+            <h4>Hard skills</h4>
+
+            <SkillLine  v-for="(skill, i) in hard"
+            :key = i
+            :label="skill.title"
+            :percent="skill.percent"/>
+
+            <h4>Soft skills</h4>      
+
+            <SkillLine  v-for="(skill, i) in soft"
+            :key = i
+            :label="skill.title"
+            :percent="skill.percent"/>  
+            <br>
+            <MainButton :action="downloadResume" class="btn" text="Резюме"/>  
+            <div class="download_button" @click="downloadResume" ></div>
         </div>
 
         <div class="right_bar">
-            <h1>Князян Джордж Арменович</h1>    
-            <h3>Возраст: 22 г., Гражданство: РФ,<br>
-                Обазование: Оконченное высшее (бакалавариат)
-            </h3>
-            <div class="markdown_text">
-                {{ md_text }}
-            </div>
+            <div v-html="resume.resume_html"></div>
             <RouterLink to="/contacts" class="contactme">Написать <i></i></RouterLink> 
         </div>
     </div>
 </template>
 
 <script>
+import axios from "axios"
+import { BASE_URL } from "@/config";
+import { mapGetters } from "vuex"
+import { download } from '@/utils'
+
 import { RouterLink } from 'vue-router';
 import Avatar from '@/components/Avatar.vue';
 import SkillLine from '@/components/SkillLine.vue';
@@ -30,7 +42,9 @@ import MainButton from '@/components/MainButton.vue';
 export default{
     data(){
         return{
-            md_text:''
+            resume:{},
+            hard:[],
+            soft:[]
         }
     },
     components:{
@@ -38,15 +52,51 @@ export default{
         Avatar,
         MainButton
     },
+    computed:{
+        ...mapGetters('main', ['getInfoProfile'])
+    },
     methods:{
-        GET_MD_RESUME_FROM_API(){
+        downloadResume(){
+            const url = this.resume.resume_pdf
+            download(url)
+        },
 
+        GET_HTML_RESUME_FROM_API(){
+            const url = BASE_URL + "personal/resume/"
+            axios.get(url)
+                .then( r => this.resume = r.data)
+                .catch( e => console.log(e) )
+        },
+        GET_SKILLS_FROM_API(type){
+            const url = BASE_URL + `personal/skills/${type}`
+            axios.get(url)
+                .then( r => this[type] = r.data)
+                .catch( e => console.log(e) )
         }
+    },
+    mounted(){
+        this.GET_HTML_RESUME_FROM_API()
+        this.GET_SKILLS_FROM_API("soft")
+        this.GET_SKILLS_FROM_API("hard")
     }
 }
 </script>
 
 <style scoped>
+.btn{
+    border-color:transparent;
+    letter-spacing: 2px;
+    padding: 5px 10px;
+}
+.btn:hover{
+    color:var(--main-green)
+}
+.btn:after{
+    content: "\f019";
+    margin-left:12px;
+    font-family: fa;
+    font-style: normal;
+}
 .about{
     display: flex;
     margin:50px 0;
@@ -56,11 +106,13 @@ export default{
 }
 .left_bar, .right_bar{
     flex-grow:1;
+    margin:auto
 }
 .left_bar{
     flex-basis: 25%;
     flex-grow: 30;
     max-width: 300px;
+    text-align: center;
 }
 .right_bar{
     margin-top:20px;

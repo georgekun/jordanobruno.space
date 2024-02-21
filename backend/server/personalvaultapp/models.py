@@ -21,3 +21,20 @@ class Resume(models.Model):
     def __str__(self):
         return f"{self.id} === {self.created_at}"
 
+
+
+class HardSkill(models.Model):
+    title = models.CharField(max_length=20)
+    percent = models.IntegerField()
+
+    
+    def __str__(self):
+        return f"{self.title} == {self.percent}"
+
+
+class SoftSkill(models.Model):
+    title = models.CharField(max_length=20)
+    percent = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.title} == {self.percent}"

@@ -1,16 +1,23 @@
 <template>
     <div class="avatar">
-        <div class="avatar_img"></div>
+        <div class="avatar_img" :style = returnAvatarLink ></div>
     </div>
-</template>
+</template> 
 
 <script>
+import { mapGetters } from "vuex"
+
 export default{
     name: "Avatar",
-    methods:{
-        GET_AVATAR_FROM_API(){
-
+    computed:{
+        ...mapGetters('main', ['getInfoProfile']),
+        returnAvatarLink(){
+            const link = this.getInfoProfile.avatar
+            return {"background-image":`url(${link})`}
         }
+    },
+    methods:{
+       
     }
 }
 </script>
@@ -27,8 +34,9 @@ export default{
     border:2px solid white;
     height: 100%;
     width: 100%;
-    background: url('@/assets/background_page.jpeg');
+    background-color: grey;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 </style>

@@ -1,9 +1,11 @@
 <template>
     <div class="page">
-        <Header/>
-        <slot></slot>
-        <UpArrow />
-        <Footer />
+        <div class="wrapper">
+            <Header/>
+            <slot></slot>
+            <UpArrow />
+            <Footer />
+        </div>
     </div>
 </template>
 
@@ -12,12 +14,20 @@ import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import UpArrow from '@/components/UpArrow.vue';
 
+import { mapActions } from "vuex"
+
 export default{
     name:"PageLayout",
     components:{
         Header,
         Footer,
         UpArrow
+    },
+    methods:{
+        ...mapActions('main', ['GET_INFO_PROFILE_FROM_API'])
+    },
+    mounted(){
+        this.GET_INFO_PROFILE_FROM_API()
     }
 }
 
@@ -25,16 +35,21 @@ export default{
 
 <style scoped>
 .page{
+
     background-image: linear-gradient(rgba(0, 0, 0, .57), #222),
      url("@/assets/background_page.jpeg");
     background-position: 0 0, 38%;
     background-repeat:no-repeat;
+   
     height: 540px; 
     background-size: cover;
     padding:30px 15%;
-    position: relative;
+    position: relative; 
+   
 }   
-
+.wrapper{
+    max-width: 1200px;
+}
 @media screen and (max-width:1050px){
     .page{
         padding:30px 5%;

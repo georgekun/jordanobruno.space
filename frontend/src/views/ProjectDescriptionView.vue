@@ -91,6 +91,5 @@ h1{
     font-weight: 300;
     line-height: 24px;
     display: block;
-    
 }
 </style>
