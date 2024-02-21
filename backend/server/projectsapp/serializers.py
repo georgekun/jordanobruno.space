@@ -11,11 +11,21 @@ class ProjectListSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
+    full_description = serializers.SerializerMethodField()    
     
     class Meta:
         model = Project
         fields = '__all__'
+    
+    def get_full_description(self, obj):
+        if not obj or not obj.full_description:
+            return None
 
+        try:
+            with open(obj.full_description.path, "r", encoding='utf-8') as file:
+                return file.read()
+        except (FileNotFoundError, IOError):
+            return None
 
 class ProjectImagesSerializer(serializers.ModelSerializer):
 

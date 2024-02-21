@@ -24,7 +24,7 @@ class ListLatestProjectView(generics.ListAPIView):
 
 class ProjectView(generics.RetrieveAPIView):
     """ Ендпоинт для получения информации по проекту """
-
+    
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     lookup_field = 'id'
