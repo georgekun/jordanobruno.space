@@ -1,44 +1,70 @@
 <template>
     <div class="project-description">
-        
         <div class="head_text">
             <div>
-                <h3>{{ typeProject }}</h3>
-                <h1>{{ nameProject }}</h1>
+                <h3>{{ project.type_project || "Не известно" }}</h3>
+                <h1>{{ project.title || "Не известно" }}</h1>
             </div>
         </div>
 
-        <!-- <ProjectCard /> -->
-        <Cheeps :names="cheeps"></Cheeps>
-        <h2>Описание проекта</h2>
-        <div class="project_text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae officia, libero hic iure voluptatibus facere maiores animi ad error neque nobis asperiores nemo porro rerum aliquam recusandae aliquid sequi voluptate. Temporibus voluptatem culpa, debitis hic nisi error facere ea aliquam, non aspernatur tenetur obcaecati perspiciatis fugiat velit, numquam modi quos facilis qui! Dignissimos, fugit quam? Laborum quibusdam perspiciatis dolorum, aperiam temporibus laudantium deleniti, eum excepturi consequuntur explicabo perferendis ex unde, suscipit doloremque aliquam velit voluptatem. Ea quibusdam perferendis natus et velit odit vitae voluptatem ducimus quo, expedita laboriosam in ut dolorem mollitia eos officiis deserunt dicta explicabo cum facere? Quos!
-        </div>
-        <h3>Скриншоты</h3>
-        <Slider></Slider>
+        <ProjectCard :project = "project"/>
+        <Cheeps :names="getStackFromProject"></Cheeps>
 
+        <h2>Описание проекта</h2>
+        <div class="project_text" v-html="project.full_description"></div>
+
+        <Slider v-if="images.length > 0" :slides="images"></Slider>
     </div>
 </template>
 
 <script>
+import axios from "axios"
+import { BASE_URL } from "@/config";
+
 import ProjectCard from '@/components/ProjectCard.vue';
 import Cheeps from '@/components/Cheeps.vue';
 import Slider from '@/components/Slider.vue';
 
 export default{
+    data(){
+        return {
+            project:{},
+            images:[]
+        }
+    },
     components:{
         ProjectCard,
         Cheeps,
         Slider
     },
-    data(){
-        return {
-            typeProject:"Веб-сайт",
-            nameProject: "Лчиный кабинет для компании забюрист",
-            cheeps: ['linux', 'vuejs', 'djangorestframework', 'docker', 'nginx', 'django', 'django', 'django', 'django', 'django'
-            , 'django', 'django', 'django', 'django', 'django']
+    computed:{
+        getStackFromProject(){
+            const stringList = this.project.stack;
+            if (!stringList){ return [] }
+            const list = stringList.split(";")
+            return list
         }
+    },
+    methods:{
+        GET_PROJECT_FROM_API(){
+            const url = BASE_URL + `projects/${this.project.id}/`
+            axios.get(url)
+            .then( r => this.project = r.data )
+            .catch( e => console.log(e))
+        },
+        GET_LIST_IMAGES_PROJEC_FROM_API(){
+            const url = BASE_URL + `projects/images/${this.project.id}/`
+            axios.get(url)
+            .then( r => this.images = r.data )
+            .catch( e => console.log(e))
+        }
+    },
+    mounted(){
+        this.project.id = this.$route.params.id
+        this.GET_PROJECT_FROM_API()
+        this.GET_LIST_IMAGES_PROJEC_FROM_API()
     }
+    
 }
 </script>
 
@@ -46,7 +72,9 @@ export default{
 h3{
     color:var(--main-green);
 }
-
+h1{
+    max-width: 550px;
+}
 .head_text{
     min-height: 0;
     margin-top:20vh;

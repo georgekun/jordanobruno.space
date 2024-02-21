@@ -30,6 +30,7 @@ export default{
 .card_image {
     background-repeat: no-repeat; 
     background-size: cover;
+    background-position: center;
     border-radius:3px;
     width:100%;
     height: 100%;
@@ -39,6 +40,13 @@ export default{
     .project-card{
         width: 90vw;
         height: 60vh;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .project-card{
+        width: 90vw;
+        height: 30vh;
     }
 }
 </style>

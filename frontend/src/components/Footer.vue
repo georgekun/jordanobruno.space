@@ -27,7 +27,8 @@ export default{
     justify-content: space-between;
     color:var(--main-grey);
     flex-wrap:wrap;
-    padding-bottom:30px;
+    padding-top: 20px;
+    padding-bottom:10px;
 }
 
 .footer-box:last-child{

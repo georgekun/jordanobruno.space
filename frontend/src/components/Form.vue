@@ -74,10 +74,7 @@ export default{
     width: 90%;
     margin: 50px auto;
 }
-button{
-    background-color: transparent;
-    border:none;
-}
+
 .lbl{
     letter-spacing: 1px;
     text-transform: uppercase;

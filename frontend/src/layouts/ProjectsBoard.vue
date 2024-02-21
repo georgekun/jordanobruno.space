@@ -7,7 +7,7 @@
                 :project="proj"
                 />
         </div>
-        <RouterLink to="/projects" class="projects">Смотреть больше <i></i></RouterLink> 
+        <RouterLink v-if="latest" to="/projects" class="projects">Смотреть больше <i></i></RouterLink> 
     </div>
 </template>
 
@@ -15,7 +15,6 @@
 import { BASE_URL } from '@/config';
 import axios from 'axios';
 import ProjectCard from '@/components/ProjectCard.vue';
-
 
 export default{
     name: "ProjectsBoard",

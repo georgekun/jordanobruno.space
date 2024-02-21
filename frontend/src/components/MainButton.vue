@@ -16,7 +16,7 @@ export default{
 
 <style scoped>
 .main-btn{
-    padding:15px 40px;
+    padding:10px 40px;
     text-transform: uppercase;
     border: 1px solid var(--main-green);
     color: var(--main-green);

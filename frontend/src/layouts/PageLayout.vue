@@ -35,7 +35,7 @@ export default{
     position: relative;
 }   
 
-@media screen and (max-width:900px){
+@media screen and (max-width:1050px){
     .page{
         padding:30px 5%;
         position: relative;

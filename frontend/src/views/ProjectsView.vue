@@ -6,9 +6,9 @@
             </div>
         </div>
         <ProjectsBoard :latest="false"/>
-        <MainButton 
+        <!-- <MainButton 
         class="main-button-float"
-        text="Ещё" action=""/>
+        text="Ещё" action=""/> -->
     </div>
 </template>
 
