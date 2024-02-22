@@ -4,15 +4,20 @@ import axios from "axios"
 export default {
     namespaced: true,
     state: {
-        info:{}
+        info:{},
+        msg:''
     },
     getters:{
         getInfoProfile(state){
             return state.info
+        },
+        getMsgStatus(state){
+            return state.msg
         }
     },
     mutations:{
-        setInfoProfile(state, data){ state.info = data }
+        setInfoProfile(state, data){ state.info = data },
+        setMsgStatus(state, msg){ state.msg = msg }
     },
     actions:{
         GET_INFO_PROFILE_FROM_API({ commit }){

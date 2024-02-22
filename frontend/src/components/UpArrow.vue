@@ -43,6 +43,7 @@ export default {
     bottom: 10%;
     width: 30px;
     height: 30px;
+    z-index:50;
 }
 .scroll_btn{
     cursor: pointer;

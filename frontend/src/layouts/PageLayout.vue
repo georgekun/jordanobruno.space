@@ -5,6 +5,8 @@
             <slot></slot>
             <UpArrow />
             <Footer />
+            <Notification />
+            
         </div>
     </div>
 </template>
@@ -13,6 +15,7 @@
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import UpArrow from '@/components/UpArrow.vue';
+import Notification from '@/components/Notification.vue';
 
 import { mapActions } from "vuex"
 
@@ -21,14 +24,16 @@ export default{
     components:{
         Header,
         Footer,
-        UpArrow
+        UpArrow,
+        Notification,
+        Notification
     },
     methods:{
         ...mapActions('main', ['GET_INFO_PROFILE_FROM_API'])
     },
     mounted(){
         this.GET_INFO_PROFILE_FROM_API()
-    }
+    },
 }
 
 </script>

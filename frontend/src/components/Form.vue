@@ -30,7 +30,7 @@
                 v-model="data.sender_comment"
                 ></textarea>
             <div class="btn_cont">
-                <button type="submit">
+                <button type="submit" :disabled="loading">
                     <MainButton
                     text="Отправить"/>
                 </button>
@@ -45,6 +45,7 @@ import axios from "axios"
 import MainButton from './MainButton.vue';
 import { BASE_URL }  from "@/config";
 import { createNewFormData } from "@/utils"
+import { mapMutations } from 'vuex'
 
 export default{
     name:"Form",
@@ -53,16 +54,21 @@ export default{
     },
     data(){
         return{
-            data:{}
+            data:{},
+            loading:false
         }
     },
     methods:{
+        ...mapMutations('main', ['setMsgStatus']),
+
         SEND_APPLICATION_TO_API(){
+            this.loading = true
             const url = BASE_URL + "form/application/new/"
             let formData = createNewFormData(this.data, [])
             axios.post(url, formData)
-                .then( r => console.log(r.data.msg))
-                .catch( e => console.log(e.response.data.msg))
+                .then( (r) => {this.setMsgStatus(r.data.msg), this.loading=false})
+                .catch( () => this.loading = false)
+                
         }
     }
 }
