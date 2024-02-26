@@ -2,8 +2,18 @@
     <div class="footer">
        <div class="footer-box" v-if = "getInfoProfile">
             <ul>
-                <li id="gmail">gmail: {{getInfoProfile.email}}</li>
-                <li id="tg"> telegram: {{getInfoProfile.telegram_link}}</li>
+                <li id="gmail">gmail: 
+                    <a target="blank" :href="getMailLink">
+                        {{getInfoProfile.email}}
+                    </a>
+                </li>
+                
+                <li id="tg">telegram: 
+                    <a target="blank" 
+                        href="https://t.me/GeorgiKn">
+                        {{getInfoProfile.telegram_link}}
+                    </a>
+                </li>
             </ul>
        </div>
 
@@ -19,7 +29,10 @@ import { mapGetters } from 'vuex'
 export default{
     name: "Footer",
     computed:{
-        ...mapGetters('main', ['getInfoProfile'])
+        ...mapGetters('main', ['getInfoProfile']),
+        getMailLink(){
+            return `mailto:${this.getInfoProfile.email}`
+        }
     }
 }
 

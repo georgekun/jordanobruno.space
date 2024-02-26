@@ -15,8 +15,7 @@ import ProjectsBoard from '@/layouts/ProjectsBoard.vue';
 
 export default{
     components:{
-        ProjectsBoard, 
-        MainButton
+        ProjectsBoard
     }
 }
 </script>
