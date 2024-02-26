@@ -25,12 +25,18 @@ DEBUG = bool(int(os.environ.get("DEBUG", 1)))
 
 ALLOWED_HOSTS = ["localhost", 'http://jordanobruno.space']
 
+CSRF_TRUSTED_ORIGINS = [
+       'http://jordanobruno.space','https://jordanobruno.space'
+]
+
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
 CORS_EXPOSE_HEADERS = ['Content-Disposition']
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'http://jordanobruno.space'
+    'http://jordanobruno.space',
+    'https://jordanobruno.space'
 ]
 
 # Application definition
