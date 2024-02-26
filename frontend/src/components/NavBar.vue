@@ -45,13 +45,13 @@ export default{
 ul{
     display: flex;
     grid-gap:5px;
- 
 }
 .nav-link{
     color: var(--main-grey);
     padding:10px;
     font-weight: 300;
-    font-size:0.8em;
+    font-size:0.7em;
+    letter-spacing: 2px;
 }
 .nav-link:hover{
     color: white;

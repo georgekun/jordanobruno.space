@@ -1,30 +1,35 @@
 <template>
     <div class="about">
+
         <div class="left_bar">
             <Avatar/>
             <h2>{{ getInfoProfile.name }}</h2>
             <h4>Hard skills</h4>
 
             <SkillLine  v-for="(skill, i) in hard"
-            :key = i
-            :label="skill.title"
-            :percent="skill.percent"/>
+                :key = i
+                :label="skill.title"
+                :percent="skill.percent"
+            />
 
             <h4>Soft skills</h4>      
 
             <SkillLine  v-for="(skill, i) in soft"
-            :key = i
-            :label="skill.title"
-            :percent="skill.percent"/>  
+                :key = i
+                :label="skill.title"
+                :percent="skill.percent"
+            />  
+
             <br>
-            <MainButton :action="downloadResume" class="btn" text="Резюме"/>  
-            <div class="download_button" @click="downloadResume" ></div>
+            <MainButton :action="downloadResume" class="btn" text="">Резюме</MainButton>
+            <!-- <div class="download_button" @click="downloadResume" ></div> -->
         </div>
 
         <div class="right_bar">
             <div v-html="resume.resume_html"></div>
             <RouterLink to="/contacts" class="contactme">Написать <i></i></RouterLink> 
         </div>
+
     </div>
 </template>
 
@@ -57,6 +62,7 @@ export default{
     },
     methods:{
         downloadResume(){
+            console.log(123)
             const url = this.resume.resume_pdf
             download(url)
         },
@@ -89,7 +95,8 @@ export default{
     padding: 5px 10px;
 }
 .btn:hover{
-    color:var(--main-green)
+    color:white;
+    border-color:transparent;
 }
 .btn:after{
     content: "\f019";

@@ -9,6 +9,7 @@
             size="20"
             indeterminate
         ></v-progress-circular>
+
     </button>
 </template>
 
@@ -23,11 +24,13 @@ export default{
         text: String
     },
     methods: {
+        
         async handleClick() {
             this.loading = true; 
             try {
-                await this.action; 
-            } finally {
+                await this.action(); 
+            }
+            finally {
                 this.loading = false; 
             }
         }

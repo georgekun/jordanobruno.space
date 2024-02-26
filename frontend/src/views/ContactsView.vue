@@ -3,7 +3,7 @@
 
         <div class="head_text">
             <div>
-                <h1>Давайте начнём, что нибудь вместе!</h1>
+                <h1>Давайте начнём что-нибудь вместе!</h1>
             </div>
         </div>
         <Form />
@@ -22,10 +22,16 @@ export default{
 <style scoped>
 
 .head_text h1{
-    font-size:3em
+    font-size:4em
 }
 .head_text{
     margin-top:12vh;
     min-height: 30vh;
+}
+
+@media screen and (max-width:500px){
+    .head_text h1{
+        font-size:2.3em
+    } 
 }
 </style>
