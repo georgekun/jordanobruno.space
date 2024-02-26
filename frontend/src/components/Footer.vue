@@ -3,13 +3,14 @@
        <div class="footer-box" v-if = "getInfoProfile">
             <ul>
                 <li id="gmail">gmail: 
-                    <a target="blank" :href="getMailLink">
+                    <a target="blank" class="con-link" :href="getMailLink">
                         {{getInfoProfile.email}}
                     </a>
                 </li>
                 
                 <li id="tg">telegram: 
                     <a target="blank" 
+                        class="con-link"
                         href="https://t.me/GeorgiKn">
                         {{getInfoProfile.telegram_link}}
                     </a>
@@ -53,5 +54,10 @@ export default{
     margin-top: auto;
     padding:10px 0;
 }
-
+.con-link{
+    color:var(--main-grey);
+}
+.con-link:hover{
+    color:white;
+}
 </style>
