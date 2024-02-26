@@ -8,12 +8,10 @@ class ApplicationSerializer(serializers.ModelSerializer):
         exclude = ['sender_ip','created_at']
 
     def create(self, validated_data):
-        # Получаем IP-адрес пользователя из запроса
         request = self.context.get('request')
         if request and hasattr(request, 'META'):
             sender_ip = request.META.get('REMOTE_ADDR')
-
-           # self.__check_matches(sender_ip)
+            self.__check_matches(sender_ip)
             validated_data['sender_ip'] = sender_ip
         return super().create(validated_data)
 
@@ -24,4 +22,4 @@ class ApplicationSerializer(serializers.ModelSerializer):
         ).first()
 
         if application_exists:
-            raise ValueError("Вы уже отправляли заявку")
+            raise ValueError("Вы уже отправляли заявку! Ожидайте ответа.")
