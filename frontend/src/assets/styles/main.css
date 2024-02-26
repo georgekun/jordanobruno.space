@@ -9,3 +9,9 @@
 .head_text > div{
     margin:auto;
 }
+
+.v-overlay__scrim{
+    /* фон даилгового окна */
+    background: rgb(0, 0, 0);
+    opacity: 0.6;
+}

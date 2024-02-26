@@ -10,6 +10,7 @@
                 required
                 v-model="data.sender_name"
                 >
+
             <label for="contact" class="lbl">Как связаться с Вами?</label>
             <input 
                 id="contact"
@@ -19,6 +20,7 @@
                 required
                 v-model="data.sender_contact"
                 >
+
             <label for="comment" class="lbl">Оставьте комментарий</label>
             <textarea name=""
                 id="comment"
@@ -29,12 +31,13 @@
                 required
                 v-model="data.sender_comment"
                 ></textarea>
+
             <div class="btn_cont">
                 <button type="submit" :disabled="loading">
-                    <MainButton
-                    text="Отправить"/>
+                    <MainButton text="Отправить" />
                 </button>
             </div>
+
         </form>
     </div>
 </template>
