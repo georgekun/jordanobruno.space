@@ -6,15 +6,12 @@
             </div>
         </div>
         <ProjectsBoard :latest="false"/>
-        <!-- <MainButton 
-        class="main-button-float"
-        text="Ещё" action=""/> -->
     </div>
 </template>
 
 <script>
 import ProjectsBoard from '@/layouts/ProjectsBoard.vue';
-import MainButton from '@/components/MainButton.vue';
+
 
 export default{
     components:{

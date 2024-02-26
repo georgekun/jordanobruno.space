@@ -30,7 +30,7 @@ export default {
         window.addEventListener('scroll', this.checkScrollPosition);
         this.checkScrollPosition();
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener('scroll', this.checkScrollPosition);
     }
 };
