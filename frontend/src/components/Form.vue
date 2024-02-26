@@ -70,7 +70,7 @@ export default{
             let formData = createNewFormData(this.data, [])
             axios.post(url, formData)
                 .then( (r) => {this.setMsgStatus(r.data.msg), this.loading=false})
-                .catch( () => this.loading = false)
+                .catch( (e) => {this.setMsgStatus(e.response.data.msg), this.loading=false})
                 
         }
     }

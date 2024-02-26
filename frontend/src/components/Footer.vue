@@ -2,8 +2,8 @@
     <div class="footer">
        <div class="footer-box" v-if = "getInfoProfile">
             <ul>
-                <li id="gmail">{{getInfoProfile.email}}</li>
-                <li id="tg">{{getInfoProfile.telegram_link}}</li>
+                <li id="gmail">gmail: {{getInfoProfile.email}}</li>
+                <li id="tg"> telegram: {{getInfoProfile.telegram_link}}</li>
             </ul>
        </div>
 
