@@ -23,13 +23,14 @@ ENV_PATH = "../../.env"
 load_dotenv(ENV_PATH)
 DEBUG = bool(int(os.environ.get("DEBUG", 1)))
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", 'http://jordanobruno.space']
 
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
 CORS_EXPOSE_HEADERS = ['Content-Disposition']
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+    'http://jordanobruno.space'
 ]
 
 # Application definition
