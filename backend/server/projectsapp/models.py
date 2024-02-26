@@ -13,7 +13,7 @@ class Project(models.Model):
     
     main_image = models.FileField(
             upload_to="_project/images/main/", 
-            validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg'])])
+            validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg', 'jpg'])])
     
     def __str__(self):
         return f"{self.id} ==> {self.title}"
@@ -24,7 +24,7 @@ class ProjectImage(models.Model):
     
     image = models.FileField(
             upload_to="_project/images/",
-            validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg'])])
+            validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg', 'jpg'])])
     
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 

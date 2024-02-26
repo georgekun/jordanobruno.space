@@ -7,7 +7,7 @@ class Profile(models.Model):
     
     avatar = models.FileField(
             upload_to="_my/profile/",
-            validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg'])])
+            validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg', 'jpg'])])
     
     number_phone = models.CharField(max_length=30)  
     email = models.CharField(max_length=30)
