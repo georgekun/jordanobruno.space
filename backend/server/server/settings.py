@@ -23,7 +23,7 @@ ENV_PATH = "../../.env"
 load_dotenv(ENV_PATH)
 DEBUG = bool(int(os.environ.get("DEBUG", 1)))
 
-ALLOWED_HOSTS = ["localhost", 'http://jordanobruno.space']
+ALLOWED_HOSTS = ["localhost", 'jordanobruno.space']
 
 CSRF_TRUSTED_ORIGINS = [
        'http://jordanobruno.space','https://jordanobruno.space'
