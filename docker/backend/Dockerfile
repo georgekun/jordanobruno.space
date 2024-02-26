@@ -5,8 +5,8 @@ WORKDIR /app
 
 COPY ../../backend/ /app/
 
-COPY requirements.txt /app/
+COPY ../../docker/ /app/docker/
 RUN pip install --no-cache-dir -r requirements.txt
   
 
-RUN chmod +x /app/server-entrypoint.sh
+RUN chmod +x /app/docker/backend/entrypoint.sh

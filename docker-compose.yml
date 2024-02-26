@@ -6,12 +6,12 @@ services:
         build:
             context: .
             dockerfile: ./docker/backend/Dockerfile
-        entrypoint: ./app/docker/backend/entrypoint.sh
+        entrypoint: /app/docker/backend/entrypoint.sh
         volumes:
             - static_volume:/app/server/django_static
         ports:
             - "8000:8000"
-        ENV_PATH:
+        env_file:
             - "./backend/.env"        
         depends_on:
             - db
