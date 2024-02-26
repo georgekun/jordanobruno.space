@@ -9,7 +9,7 @@ services:
         entrypoint: /app/docker/backend/entrypoint.sh
         volumes:
             - media_volume:/app/server/mediafiles
-            - ./backend/server/django_static :/app/server/django_static
+            - ./backend/server/django_static:/app/server/django_static
         ports:
             - "8000:8000"
         env_file:
