@@ -14,27 +14,21 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-^m^g^7bverwjtxq2duar8ywwvt!s#4k6u^$n(sqhx%aokpca)x'
+
 ENV_PATH = "../../.env"
 load_dotenv(ENV_PATH)
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get("DEBUG", 1)))
 
 ALLOWED_HOSTS = ["localhost"]
 
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
-CORS_EXPOSE_HEADERS = ['Content-Disposition'] # для отправки файлов  эта настройка позволит прочитать имя файл
+CORS_EXPOSE_HEADERS = ['Content-Disposition']
 CORS_ALLOWED_ORIGINS = [
-     # Замените это на адрес вашего фронтенд-сервера
     'http://localhost:5173',
 ]
 
@@ -69,7 +63,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-
     "corsheaders.middleware.CorsMiddleware",
 ]
 
@@ -95,18 +88,25 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # 'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': BASE_DIR / 'db.sqlite3',
+    # },
+
+    'default':  {
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": os.environ.get("HOST", "db"),
+        "NAME":  "postgres",
+        "USER":  "postgres",
+        "PASSWORD": "postgres",
+        "PORT": "5432",
+  }
 }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -125,7 +125,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -136,12 +135,10 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+SSTATIC_URL = 'django_static/'
+STATIC_ROOT = BASE_DIR / 'django_static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 MEDIA_URL = '/media/'
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
