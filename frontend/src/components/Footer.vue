@@ -19,7 +19,7 @@
        </div>
 
        <div class="footer-box">
-            <span>Last update: 20.20.2024 15:20 (GMT+3)</span>
+            <span>Last update: 20.02.2024 15:20 (GMT+3)</span>
        </div>
     </div>
 </template>
