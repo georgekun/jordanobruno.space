@@ -26,12 +26,18 @@ export default{
     width: 320px;
     height: 300px;
     margin:auto;
+    border-radius:10px;
+}
+
+.project-card:hover{
+    filter: brightness(80%);
+    transition: 0.3s;
 }
 .card_image {
     background-repeat: no-repeat; 
     background-size: cover;
     background-position: center;
-    border-radius:3px;
+    border-radius:10px;
     width:100%;
     height: 100%;
 }
