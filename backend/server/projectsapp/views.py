@@ -11,7 +11,7 @@ from .serializers import (ProjectSerializer,
 class ListProjectView(generics.ListAPIView):
     """ Ендпоинт для получения всех проектов """
 
-    queryset = Project.objects.all()
+    queryset = Project.objects.all().order_by('-id')
     serializer_class = ProjectListSerializer
 
 
