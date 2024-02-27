@@ -11,9 +11,22 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 
+class FileUrlField(serializers.FileField):
+    def to_internal_value(self, data):
+        try:
+            URLValidator()(data)
+        except ValidationError as e:
+            raise ValidationError('Invalid Url')
+
+        # download the contents from the URL
+        file, http_message = urlretrieve(data)
+        file = File(open(file, 'rb'))
+        return super(FileUrlField, self).to_internal_value(ContentFile(file.read(), name=file.name))
+
+
 class ResumeSerializer(serializers.ModelSerializer):
     resume_html = serializers.SerializerMethodField()
-    resume_pdf = serializers.SerializerMethodField()
+    resume_pdf = FileUrlField()
 
     class Meta:
         model = Resume
@@ -26,9 +39,5 @@ class ResumeSerializer(serializers.ModelSerializer):
         with open(instance.resume_html.path, "rb") as file:
             return file.read()
 
-    def get_resume_pdf(self, instance):
-        if instance.resume_pdf:
-            return default_storage.url(instance.resume_pdf)
-        return None
 
 
