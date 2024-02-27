@@ -12,7 +12,7 @@
                     <a target="blank" 
                         class="con-link"
                         href="https://t.me/GeorgiKn">
-                        {{getInfoProfile.telegram_link}}
+                        @{{getInfoProfile.telegram_link}}
                     </a>
                 </li>
             </ul>
