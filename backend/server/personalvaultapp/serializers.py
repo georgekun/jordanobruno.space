@@ -16,7 +16,7 @@ class ResumeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Resume
-        exclude = ['resume_html']
+        exclude = ['resume_pdf']
         
     def get_resume_html(self, instance):
         if not instance or not instance.resume_html:

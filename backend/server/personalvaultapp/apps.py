@@ -14,7 +14,7 @@ class PersonalvaultappConfig(AppConfig):
         from django.contrib.auth.models import User
         from django.db.utils import IntegrityError
 
-        if 'migrate' not in sys.argv and 'makemigrations' not in sys.argv:
+        if 'migrate' not in sys.argv:
             # Создание суперпользователя
             try:
                 user = User.objects.filter(username="admin").first()
