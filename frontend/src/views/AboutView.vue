@@ -73,7 +73,7 @@ export default{
     },
     methods:{
         downloadResume(){
-            const url = this.resume.resume_pdf
+            const url = BASE_URL + "personal/resume-pdf/"
             download(url)
         },
 

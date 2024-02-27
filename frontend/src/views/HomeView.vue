@@ -38,7 +38,6 @@ import { download } from '@/utils'
 export default{
     data(){
         return {
-            resume:{},
         }
     },
     components:{
@@ -60,19 +59,14 @@ export default{
                 behavior: 'smooth'
             });
        },
-       downloadResume(){
-            const url = this.resume.resume_pdf
+        downloadResume(){
+            const url = BASE_URL + "personal/resume-pdf/"
             download(url)
         },
-        GET_HTML_RESUME_FROM_API(){
-            const url = BASE_URL + "personal/resume/"
-            axios.get(url)
-                .then( r => this.resume = r.data)
-                .catch( e => console.log(e) )
-        }
+     
     },
     mounted(){
-        this.GET_HTML_RESUME_FROM_API()
+        
     }
 }
 </script>
