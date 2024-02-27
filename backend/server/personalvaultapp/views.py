@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from .models import Profile, Resume, HardSkill, SoftSkill
-from .serializers import (ProfileSerializer, SkillSerializer, ResumeSerializer)
+from .models import Profile, Resume
+from .serializers import ProfileSerializer, ResumeSerializer
 
 class LatestProfileView(generics.RetrieveAPIView):
     """ Ендпоинт для получения последней версии профиля """
