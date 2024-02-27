@@ -35,6 +35,7 @@ export default{
 }
 .line_back{
     width:100%;
+    opacity: 0.2;
     height: 4px;
     background-color: var(--main-grey); 
     position: absolute;

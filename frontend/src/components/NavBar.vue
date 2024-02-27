@@ -50,7 +50,7 @@ ul{
     color: var(--main-grey);
     padding:10px;
     font-weight: 300;
-    font-size:0.7em;
+    font-size:0.8em;
     letter-spacing: 2px;
 }
 .nav-link:hover{

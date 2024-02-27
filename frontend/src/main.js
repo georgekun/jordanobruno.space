@@ -1,3 +1,6 @@
+import "bootstrap-icons/font/bootstrap-icons.css"
+
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -23,3 +26,4 @@ app.use(router)
 app.use(store)
 // app.use(VueMeta)
 app.mount('#app')
+

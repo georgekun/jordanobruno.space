@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import png from "@/assets/main_cat.png"
+import png from "@/assets/main.png"
 
 export default {
     name:"Slider",

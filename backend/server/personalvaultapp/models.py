@@ -10,9 +10,10 @@ class Profile(models.Model):
             validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg', 'jpg'])])
     
     number_phone = models.CharField(max_length=30)  
-    email = models.CharField(max_length=30)
-    telegram_link = models.CharField(max_length=20)
-    vk_link = models.CharField(max_length=20)    
+    email = models.CharField(max_length=100)
+    telegram_link = models.CharField(max_length=100)
+    vk_link = models.CharField(max_length=100)  
+    github_link = models.CharField(max_length=100)   
     update_at = models.DateTimeField(auto_now_add=True)
 
 
@@ -32,20 +33,3 @@ class Resume(models.Model):
     def __str__(self):
         return f"{self.id} === {self.created_at}"
 
-
-
-class HardSkill(models.Model):
-    title = models.CharField(max_length=20)
-    percent = models.IntegerField()
-
-    
-    def __str__(self):
-        return f"{self.title} == {self.percent}"
-
-
-class SoftSkill(models.Model):
-    title = models.CharField(max_length=20)
-    percent = models.IntegerField()
-
-    def __str__(self):
-        return f"{self.title} == {self.percent}"

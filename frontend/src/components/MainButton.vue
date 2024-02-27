@@ -25,10 +25,10 @@ export default{
     },
     methods: {
         
-        async handleClick() {
+         handleClick() {
             this.loading = true; 
             try {
-                await this.action(); 
+                 this.action; 
             }
             finally {
                 this.loading = false; 

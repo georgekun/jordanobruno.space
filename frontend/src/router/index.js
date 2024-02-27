@@ -28,6 +28,8 @@ const router = createRouter({
       name: 'cotacts',
       component: () => import('../views/ContactsView.vue')
     },
+
+    
   ]
 })
 

@@ -26,6 +26,3 @@ class ResumeSerializer(serializers.ModelSerializer):
 
 
 
-class SkillSerializer(serializers.Serializer):
-    title = serializers.CharField()
-    percent = serializers.IntegerField()

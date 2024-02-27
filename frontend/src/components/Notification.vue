@@ -31,8 +31,8 @@ export default{
     methods: {
         ...mapMutations('main', ['setMsgStatus']),
         closeDialog(){
-            this.setMsgStatus('')
             this.isActive = false
+            this.setMsgStatus('')
         }
     },
     watch:{

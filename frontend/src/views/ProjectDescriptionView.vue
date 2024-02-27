@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <ProjectCard :project = "project"/>
+        <!-- <ProjectCard :project = "project"/> -->
         <Cheeps :names="getStackFromProject"></Cheeps>
 
         <h2>Описание проекта</h2>

@@ -21,8 +21,7 @@
             />  
 
             <br>
-            <MainButton :action="downloadResume" class="btn" text="">Резюме</MainButton>
-            <!-- <div class="download_button" @click="downloadResume" ></div> -->
+            <MainButton @click="downloadResume" class="btn" text="">Резюме</MainButton>
         </div>
 
         <div class="right_bar">
@@ -48,8 +47,20 @@ export default{
     data(){
         return{
             resume:{},
-            hard:[],
-            soft:[]
+            hard:[
+                {title:"Python / Django / DRF", percent:90},
+                {title:"JS / VueJS 3 / Vuetify", percent:80},
+                {title:"Asyncio / Aiohttp", percent:85},
+                {title:"Linux", percent:60},
+                {title:"Docker", percent:80},
+                {title:"Flask / FastAPI", percent:70},
+                {title:"SQL / postgresql", percent:60},
+                {title:"Scraping", percent:80},
+            ],
+            soft:[
+                {title:"Обучаемость", percent:100},
+                {title:"Коммуникабельность", percent:100},
+            ]
         }
     },
     components:{
@@ -62,7 +73,6 @@ export default{
     },
     methods:{
         downloadResume(){
-            console.log(123)
             const url = this.resume.resume_pdf
             download(url)
         },
@@ -72,18 +82,10 @@ export default{
             axios.get(url)
                 .then( r => this.resume = r.data)
                 .catch( e => console.log(e) )
-        },
-        GET_SKILLS_FROM_API(type){
-            const url = BASE_URL + `personal/skills/${type}`
-            axios.get(url)
-                .then( r => this[type] = r.data)
-                .catch( e => console.log(e) )
         }
     },
     mounted(){
         this.GET_HTML_RESUME_FROM_API()
-        this.GET_SKILLS_FROM_API("soft")
-        this.GET_SKILLS_FROM_API("hard")
     }
 }
 </script>

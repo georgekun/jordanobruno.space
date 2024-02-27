@@ -1,21 +1,17 @@
 <template>
     <div class="home">
         
-        <div class="head">
-            <HomeAvatar></HomeAvatar>
+        <HeadText></HeadText>
 
-            <div>
-                <div class="head__text">
-                  <ul v-for="p in desc" :key="p.id">
-                    <p class="title_p">{{ p.title }}</p>
-                    <li v-for="(text, i) in p.span" :key="i">
-                        <p class="ia">{{text}}</p>
-                    </li>
-                  </ul>
-                </div>
-            </div>
-
+        <div class="btn-group">
+            <MainButton @click="scrollToBottom" class="btn-item">Нанять</MainButton>
+            <MainButton @click="downloadResume" class="btn-item">Резюме</MainButton>
         </div>
+
+        <SocialMedia></SocialMedia>
+
+        <h2>Что я предлагаю</h2>
+        <HomeCardBoard />
 
         <h2>Изучите недавние работы</h2>
         <ProjectsBoard :latest="true"/>
@@ -29,46 +25,69 @@
 import ProjectsBoard from "@/layouts/ProjectsBoard.vue"
 import MainButton from "@/components/MainButton.vue";
 import Form from "@/components/Form.vue";
-import HomeAvatar from "@/components/HomeAvatar.vue";
+import HeadText from "@/components/HeadText.vue";
+import SocialMedia from '@/components/SocialMedia.vue';
+import HomeCardBoard from "@/layouts/HomeCardBoard.vue";
 
+
+import axios from "axios"
+import { BASE_URL } from "@/config";
+import { mapGetters } from "vuex"
+import { download } from '@/utils'
 
 export default{
     data(){
-        return{
-            desc:[
-                {title:"Сфера / профиль образования", 
-                    span:['IT / Информационная безопаснсть' ]},
-
-                {title:"В настоящее время", 
-                    span:['Full stack web-developer',
-                         'Django - FastAPI  and  Vue - Nuxt',
-                         'предоставляю услуги по разработке веб-приложений',
-                        ]},
-            ]
+        return {
+            resume:{},
         }
     },
     components:{
         ProjectsBoard,
         MainButton,
         Form,
-        HomeAvatar
+        MainButton,
+        SocialMedia,
+        HeadText,
+        HomeCardBoard
     },
-    compuded:{},
+    compuded:{
+        ...mapGetters('main', ['getInfoProfile'])
+    },
     methods:{
        scrollToBottom(){
         window.scrollTo({
                 top:document.documentElement.scrollHeight,
                 behavior: 'smooth'
             });
-       }
+       },
+       downloadResume(){
+            const url = this.resume.resume_pdf
+            download(url)
+        },
+        GET_HTML_RESUME_FROM_API(){
+            const url = BASE_URL + "personal/resume/"
+            axios.get(url)
+                .then( r => this.resume = r.data)
+                .catch( e => console.log(e) )
+        }
     },
-    mounted(){}
+    mounted(){
+        this.GET_HTML_RESUME_FROM_API()
+    }
 }
 </script>
 
 <style scoped>
+.btn-group{
+    margin-top:30px;
+    
+}
+.btn-item{
+    margin-bottom:10px;
+    margin-right:10px;
+}
 h2{
-    color:var(--main-green)
+    color:white;
 }
 .home{
     margin:20px auto;
@@ -82,47 +101,10 @@ h2{
     flex-wrap: wrap;
     margin:70px 0;
 }
-.head div{
-    margin:auto
-}
-.head__text{
-    color:rgba(255, 255, 255, 0.733);
-    align-content: center;
-    margin:auto;
-    font-size: 20px;
-    letter-spacing: 1px;
-    width: 100%;
-    text-align: center;
-}
-.head__text ul{
-    margin-bottom:10px;
-}
-.title_p{
-    font-weight: 600;
-    text-align: left;
-    margin-bottom: 3px;
-}
-
-.ia{
-    margin-left: 20px;
-    font-style: italic;
-    text-align: left;
-    
-}
-.ia:before{
-    content: '-';
-    margin:0 10px;
-}
 
 @media screen  and (max-width: 800px){
     .head{
         justify-content: center;
-    }
-    .ia{
-        margin-left:5px;
-    }
-    .ia:before{
-        margin:0 3px;
     }
 }
 

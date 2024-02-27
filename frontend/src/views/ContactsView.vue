@@ -6,15 +6,22 @@
                 <h1>Давайте начнём что-нибудь вместе!</h1>
             </div>
         </div>
+        <div style="display: flex;justify-content: center;">
+            <SocialMedia/>
+        </div>
+        
         <Form />
     </div>
 </template>
 
 <script>
 import Form from '@/components/Form.vue';
+import SocialMedia from '@/components/SocialMedia.vue';
+
 export default{
    components:{
-        Form
+        Form,
+        SocialMedia
    }
 }
 </script>
