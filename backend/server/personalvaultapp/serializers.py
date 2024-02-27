@@ -28,7 +28,7 @@ class ResumeSerializer(serializers.ModelSerializer):
 
     def get_resume_pdf(self, instance):
         if instance.resume_pdf:
-            return default_storage.url(instance.resume_pdf.name)
+            return default_storage.url(instance.resume_pdf)
         return None
 
 
