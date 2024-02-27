@@ -1,10 +1,10 @@
 <template>
     <div class="socials">
-        <a target='blank' id='tel' :href="getInfoProfile.number_phone">
+        <a target='blank' id='tel' :href="'tel:' + getInfoProfile.number_phone">
             <i class="bi bi-telephone-fill"></i>
         </a>
 
-        <a target='blank' id="mail" :href="getInfoProfile.email">
+        <a target='blank' id="mail" :href="'mailto:'+getInfoProfile.email">
             <i class="bi bi-envelope-at-fill"></i>
         </a>
 
@@ -12,7 +12,7 @@
             <i class="bi bi-github"></i>
         </a>
 
-        <a target='blank' id='git' :href="getInfoProfile.github_link">
+        <a target='blank' id='git' :href="getInfoProfile.telegram_link">
            <i class="bi bi-telegram"></i>
         </a> 
     </div>
