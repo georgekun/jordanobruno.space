@@ -7,12 +7,8 @@
             </div>
         </div>
 
-        <!-- <ProjectCard :project = "project"/> -->
         <Cheeps :names="getStackFromProject"></Cheeps>
-
-        <h2>Описание проекта</h2>
         <div class="project_text" v-html="project.full_description"></div>
-
         <Slider v-if="images.length > 0" :slides="images"></Slider>
     </div>
 </template>
@@ -74,6 +70,7 @@ h3{
 }
 h1{
     max-width: 550px;
+    margin-bottom:0
 }
 .head_text{
     min-height: 0;
