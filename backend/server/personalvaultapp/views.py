@@ -1,5 +1,5 @@
 from django.http import FileResponse
-from rest_framework import generics, views
+from rest_framework import generics, views, response, status
 
 from .models import Profile, Resume
 from .serializers import ProfileSerializer, ResumeSerializer
@@ -28,11 +28,11 @@ class DownloadResumeView(views.APIView):
 
     def get(self, request):
         resume = Resume.objects.all().last()
-        if resume and resuem.resume_pdf:
-            file = resuem.resume_pdf
-            filename = format_filename(file.name)
+        if resume and resume.resume_pdf:
+            file = resume.resume_pdf
+            filename = file.name
             return FileResponse(open(file.path, 'rb'), filename=filename,   status = status.HTTP_200_OK)
         else:
-            return Response({}, status = status.HTTP_404_NOT_FOUND)
+            return response.Response({}, status = status.HTTP_404_NOT_FOUND)
    
 
