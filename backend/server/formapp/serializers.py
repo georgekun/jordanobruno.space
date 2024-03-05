@@ -23,3 +23,6 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
         if application_exists:
             raise ValueError("Вы уже отправляли заявку! Ожидайте ответа.")
+
+
+
